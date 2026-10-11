@@ -240,8 +240,8 @@ fn remove_appimage(app: &CraftApp, path: &Path, record: Option<&Record>) -> Resu
     }
     // AppImages found elsewhere (Gear Lever's ~/AppImages, ~/.local/bin) are the user's own:
     // remove only the launcher's folder or a copy the launcher recorded installing.
-    let ours = path.parent().is_some_and(|dir| crate::detect::linux::appimage_dir().is_some_and(|own| own == dir))
-        || record.is_some_and(|r| r.path == path);
+    let ours =
+        path.parent().is_some_and(|dir| crate::detect::linux::appimage_dir().is_some_and(|own| own == dir)) || record.is_some_and(|r| r.path == path);
     if !ours {
         return Err(format!("{} wasn't installed by the launcher. Remove it the way it was added.", path.display()));
     }
