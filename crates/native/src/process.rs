@@ -172,7 +172,10 @@ fn reveal_in_explorer(path: &Path) -> Result<(), String> {
     let mut cmd = command("explorer");
     // Passed raw: `arg` would wrap all of `/select,...` in quotes when the path has a space
     // (`C:\Program Files\...`), and Explorer then ignores the switch and opens Documents.
-    cmd.raw_arg(explorer_select_arg(path));
+    // A quote in the path would end the quoted part early and let the rest reach Explorer as
+    // switches; no Windows path has one, so refuse it.
+    let arg = explorer_select_arg(path).ok_or_else(|| format!("{} isn't a usable path", path.display()))?;
+    cmd.raw_arg(arg);
     spawn_detached(cmd)
 }
 
@@ -182,16 +185,18 @@ fn reveal_in_explorer(_path: &Path) -> Result<(), String> {
 }
 
 /// Explorer's `/select,"<path>"` argument as it goes on the command line: only the path is quoted,
-/// and forward slashes become backslashes, which Explorer needs to find the item.
+/// and forward slashes become backslashes, which Explorer needs to find the item. `None` for a path
+/// with a `"` in it.
 #[cfg_attr(not(windows), allow(dead_code))]
-fn explorer_select_arg(path: &Path) -> std::ffi::OsString {
-    let mut arg = std::ffi::OsString::from("/select,\"");
-    match path.to_str() {
-        Some(s) => arg.push(s.replace('/', "\\")),
-        None => arg.push(path),
+fn explorer_select_arg(path: &Path) -> Option<std::ffi::OsString> {
+    let s = path.to_str()?;
+    if s.contains('"') {
+        return None;
     }
+    let mut arg = std::ffi::OsString::from("/select,\"");
+    arg.push(s.replace('/', "\\"));
     arg.push("\"");
-    arg
+    Some(arg)
 }
 
 /// Whether a process started from inside `path` (an exe, an AppImage, or a `.app`) is running.
@@ -278,24 +283,25 @@ mod tests {
 }
 
 #[cfg(test)]
-mod tests {
+mod explorer_tests {
     use super::*;
 
     #[test]
     fn explorer_select_quotes_only_the_path() {
         let arg = explorer_select_arg(Path::new(r"C:\Program Files\PhotoCraft\photocraft.exe"));
-        assert_eq!(arg, r#"/select,"C:\Program Files\PhotoCraft\photocraft.exe""#);
+        assert_eq!(arg.unwrap(), r#"/select,"C:\Program Files\PhotoCraft\photocraft.exe""#);
     }
 
     #[test]
     fn explorer_select_without_spaces() {
         let arg = explorer_select_arg(Path::new(r"C:\Apps\photocraft.exe"));
-        assert_eq!(arg, r#"/select,"C:\Apps\photocraft.exe""#);
+        assert_eq!(arg.unwrap(), r#"/select,"C:\Apps\photocraft.exe""#);
+        assert_eq!(explorer_select_arg(Path::new(r#"C:\Apps" /root,C:\x.exe"#)), None);
     }
 
     #[test]
     fn explorer_select_uses_backslashes() {
         let arg = explorer_select_arg(Path::new("C:/Users/A B/AppData/Local/ArtCraft Launcher/apps/photocraft.exe"));
-        assert_eq!(arg, r#"/select,"C:\Users\A B\AppData\Local\ArtCraft Launcher\apps\photocraft.exe""#);
+        assert_eq!(arg.unwrap(), r#"/select,"C:\Users\A B\AppData\Local\ArtCraft Launcher\apps\photocraft.exe""#);
     }
 }
