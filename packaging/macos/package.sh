@@ -137,12 +137,17 @@ STAGE="$WORK/dmg"
 mkdir -p "$STAGE"
 ditto "$APP" "$STAGE/$APP_NAME.app"
 ln -s /Applications "$STAGE/Applications"
+# Finder window layout: background, icon size and positions (packaging/macos/dmg/README.md).
+mkdir -p "$STAGE/.background"
+cp "$HERE/dmg/background.tiff" "$STAGE/.background/background.tiff"
+cp "$HERE/dmg/dmg-layout.DS_Store" "$STAGE/.DS_Store"
 rm -f "$DMG"
 # `hdiutil create -srcfolder` writes the files as they are. `makehybrid -hfs` gave every file a
 # com.apple.FinderInfo, which `codesign --verify --strict` rejects as "Finder information, or
 # similar detritus" on the app in the image and on a copy installed from it. `create` attaches a
 # device while it copies, which fails now and then on CI runners ("Resource busy"), so it gets a
-# few tries. verify.sh checks the app inside the finished image with --strict.
+# few tries. verify.sh checks the app inside the finished image with --strict. The volume name has
+# no version: .DS_Store finds the background through an alias that includes it.
 # Usage: hdiutil_retry <what> <hdiutil args…>; tries five times with growing pauses.
 hdiutil_retry() {
   local what="$1" attempt
@@ -156,7 +161,7 @@ hdiutil_retry() {
     sleep $((attempt * 10))
   done
 }
-hdiutil_retry create create -srcfolder "$STAGE" -volname "$APP_NAME $VERSION" -fs HFS+ -format UDZO -imagekey zlib-level=9 -ov "$DMG"
+hdiutil_retry create create -srcfolder "$STAGE" -volname "$APP_NAME" -fs HFS+ -format UDZO -imagekey zlib-level=9 -ov "$DMG"
 sign "$DMG"
 codesign --verify --strict --verbose=2 "$DMG"
 if [ "$NOTARIZE" = 1 ]; then
