@@ -14,7 +14,7 @@ Download the file for your system from the [latest release](https://github.com/s
 3. Run the file and follow the installer.
 4. Start **ArtCraft Launcher** from the Start menu.
 
-The release also has an `arm64` installer for Windows on Arm and an `x86` installer for 32-bit Windows. The `x64` installer installs for the current user and needs no admin rights. It puts the launcher in `%LOCALAPPDATA%\Programs\ArtCraft Launcher`.
+The release also has an `arm64` installer for Windows on Arm. The `x64` installer installs for the current user and needs no admin rights. It puts the launcher in `%LOCALAPPDATA%\Programs\ArtCraft Launcher`.
 
 To run it without installing, download `artcraft-launcher-<version>-windows-x64-portable.zip` instead. Unzip it and run `artcraft-launcher.exe`. It keeps its settings in an `ArtCraftLauncherData` folder next to the program.
 
@@ -48,12 +48,14 @@ FreeBSD 14 and RISC-V Linux builds are also on the release page.
 
 The launcher installs each app where your system normally keeps applications, using the app's official release package.
 
-| System  | Where                                  | How                                                            |
-|---------|----------------------------------------|----------------------------------------------------------------|
-| macOS   | `/Applications/<App>.app`              | Copied from the release DMG                                    |
-| Windows | `C:\Program Files\<App>`               | The release MSI, through Windows Installer                     |
-| Linux   | `/usr/bin`, `/usr/share/applications`  | The release `.deb` or `.rpm`, with your system's password prompt. Without those, a Flatpak, or an AppImage in `~/Applications`. |
-| FreeBSD | `/usr/local`                           | The release files, with a password prompt. `~/.local` if polkit is not installed. |
+| System  | Where                                 | How                                                  |
+|---------|---------------------------------------|------------------------------------------------------|
+| macOS   | `/Applications/<App>.app`             | Copied from the release DMG                          |
+| Windows | `C:\Program Files\<App>`              | The release MSI, through Windows Installer           |
+| Linux   | `/usr/bin`, `/usr/share/applications` | The release `.deb` or `.rpm`, with a password prompt |
+| FreeBSD | `/usr/local`                          | The release files, with a password prompt            |
+
+On Linux, without those, the launcher uses a Flatpak, or an AppImage in `~/Applications`. On FreeBSD it installs to `~/.local` if polkit is not installed.
 
 ## Update the launcher
 
