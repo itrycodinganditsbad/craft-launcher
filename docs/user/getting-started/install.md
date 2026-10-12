@@ -28,9 +28,9 @@ To run it without installing, download `artcraft-launcher-<version>-windows-x64-
 
 Use a 64-bit system with glibc 2.35 or newer, such as Ubuntu 22.04, Debian 12 or Fedora 36. Pick one file from the release. Replace `x86_64` with `aarch64` on Arm.
 
-| File                                       | How to use it                                         |
-|--------------------------------------------|-------------------------------------------------------|
-| `artcraft-launcher-<version>-linux-x86_64.AppImage` | Run `chmod +x` on the file, then run it.     |
+| File                                                | How to use it                                                     |
+|-----------------------------------------------------|-------------------------------------------------------------------|
+| `artcraft-launcher-<version>-linux-x86_64.AppImage` | Run `chmod +x` on the file, then run it.                          |
 | `artcraft-launcher-<version>-linux-x86_64.deb`      | `sudo apt install ./artcraft-launcher-<version>-linux-x86_64.deb` |
 | `artcraft-launcher-<version>-linux-x86_64.rpm`      | `sudo dnf install ./artcraft-launcher-<version>-linux-x86_64.rpm` |
 

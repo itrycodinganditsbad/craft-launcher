@@ -16,13 +16,15 @@ On Windows, try starting the launcher with OpenGL: run `$env:WGPU_BACKEND = 'gl'
 
 If you start the launcher from a terminal, the error ends with `Parent device is lost`.
 
+On a PC with Intel HD or UHD Graphics 500/600 series, the launcher can exit with code 101 and the error `Shader translation error ... (0x80070057)` ([issue #111](https://github.com/storytold/craft-launcher/issues/111)).
+
 ## Fix
 
 These causes were reported in the issue tracker. Try them in order. Windows first.
 
 ### Windows: start with OpenGL
 
-A launcher user confirmed this works when the error mentions `dxil.dll` or `DXC compile error`.
+A launcher user confirmed this works when the error mentions `dxil.dll` or `DXC compile error`. The reporter of [issue #111](https://github.com/storytold/craft-launcher/issues/111) found it works on Intel HD/UHD 500/600 graphics with the `Shader translation error ... (0x80070057)` error.
 
 1. Open PowerShell.
 2. Go to the folder with `artcraft-launcher.exe`. The installed copy is in `%LOCALAPPDATA%\Programs\ArtCraft Launcher`.
