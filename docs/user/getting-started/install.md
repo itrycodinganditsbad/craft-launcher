@@ -1,11 +1,11 @@
 ---
-title: Install Craft Launcher
-description: Download Craft Launcher for Windows, macOS or Linux from GitHub, install it, and find out where it puts your apps.
+title: Install ArtCraft Launcher
+description: Download ArtCraft Launcher for Windows, macOS or Linux from GitHub, install it, and find out where it puts your apps.
 order: 10
 verified: 0.3.2
 ---
 
-Download the file for your system from the [latest release](https://github.com/storytold/craft-launcher/releases/latest) and install it. In the file names, `<version>` stands for the version number, for example `0.3.2`. The app and the files call it ArtCraft Launcher.
+Download the file for your system from the [latest release](https://github.com/storytold/craft-launcher/releases/latest) and install it. In the file names, `<version>` stands for the version number, for example `0.3.2`.
 
 ## Windows (10 and 11)
 

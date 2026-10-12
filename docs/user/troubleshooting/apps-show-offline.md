@@ -19,7 +19,7 @@ This was reported on some Windows PCs.
 ## Fix
 
 1. Check your launcher version. Open **Settings**. The version is under the title.
-2. If it is older than 0.2.0, download the latest installer from the [releases page](https://github.com/storytold/craft-launcher/releases/latest) in your browser and install it. See [Install Craft Launcher](../getting-started/install.md).
+2. If it is older than 0.2.0, download the latest installer from the [releases page](https://github.com/storytold/craft-launcher/releases/latest) in your browser and install it. See [Install ArtCraft Launcher](../getting-started/install.md).
 3. Start the launcher. The apps should show their status within a few seconds.
 
 If you are on 0.2.0 or newer and still see the error, or you cannot install a new version, use this workaround:

@@ -1,6 +1,6 @@
 ---
 title: Guides
-description: How to do one thing in Craft Launcher.
+description: How to do one thing in ArtCraft Launcher.
 order: 20
 ---
 

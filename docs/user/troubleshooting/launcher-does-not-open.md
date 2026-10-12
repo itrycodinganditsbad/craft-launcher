@@ -1,6 +1,6 @@
 ---
 title: The launcher does not open
-description: What to try when Craft Launcher does nothing, closes straight away or exits before its window appears, mostly on Windows.
+description: What to try when ArtCraft Launcher does nothing, closes straight away or exits before its window appears, mostly on Windows.
 order: 10
 verified: 0.3.2
 ---

@@ -1,7 +1,7 @@
 ---
 title: Getting started
-description: Install Craft Launcher on your computer.
+description: Install ArtCraft Launcher on your computer.
 order: 10
 ---
 
-- [Install Craft Launcher](install.md)
+- [Install ArtCraft Launcher](install.md)

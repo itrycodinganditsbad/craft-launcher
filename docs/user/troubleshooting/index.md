@@ -1,6 +1,6 @@
 ---
 title: Troubleshooting
-description: Fixes for common Craft Launcher problems.
+description: Fixes for common ArtCraft Launcher problems.
 order: 30
 ---
 
