@@ -7,7 +7,7 @@ verified: 0.3.2
 
 Download the file for your system from the [latest release](https://github.com/storytold/craft-launcher/releases/latest) and install it. In the file names, `<version>` stands for the version number, for example `0.3.2`.
 
-## Windows (10 and 11)
+## Windows 11
 
 1. Open the [latest release](https://github.com/storytold/craft-launcher/releases/latest).
 2. Download `artcraft-launcher-<version>-windows-x64.msi`. It fits most PCs (Intel and AMD, 64-bit).
