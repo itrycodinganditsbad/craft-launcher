@@ -35,17 +35,6 @@ A launcher user confirmed this works when the error mentions `dxil.dll` or `DXC 
 
 The launcher window should open. The setting only applies to that PowerShell window, so repeat it each time you start the launcher this way.
 
-### Windows: add two DLL files
-
-Two users fixed the same problem a different way. They copied `dxil.dll` and `dxcompiler.dll` into the launcher's folder.
-
-1. Download the latest zip from the [DirectX Shader Compiler releases](https://github.com/microsoft/DirectXShaderCompiler/releases).
-2. Open the `bin` folder in the zip, then the folder for your processor, usually `x64`.
-3. Copy `dxil.dll` and `dxcompiler.dll` into the folder with `artcraft-launcher.exe`.
-4. Start the launcher.
-
-Both files have to come from the same version. One user found that a single `dxil.dll` was not enough.
-
 ### macOS on a Mac patched with OpenCore Legacy Patcher
 
 The launcher quits right after its window flashes, and the terminal says `invalid value 'metal3.2'`. Users reported that this command keeps it running on some Macs:
@@ -62,7 +51,7 @@ One user reported that updating the Intel Graphics driver fixed a crash with an 
 
 On Windows the launcher draws with Direct3D 12 and compiles its shaders with a compiler file called `dxcompiler.dll`. The launcher does not include one. If Windows finds an old or unmatched copy, the shaders fail and the window never opens. OpenGL does not use that compiler.
 
-Status in version 0.3.2: no fix for this is released. Two pull requests that make the launcher use the compiler built into Windows are still open. When one is released, this page will say so.
+Status in version 0.3.2: no fix is released yet. A fix that makes the launcher use the shader compiler built into Windows was merged after 0.3.2 ([pull request 173](https://github.com/storytold/craft-launcher/pull/173)) and will ship in the next release.
 
 ## Still stuck?
 
