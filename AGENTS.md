@@ -97,12 +97,6 @@ English where there is none): never bundle a CJK font, they are 10 MB and more.
    GitHub release JSON fixtures (small, committed under `crates/core/tests/fixtures/`).
 5. When fetching anything, use a generic `ArtCraft-Launcher/<version>` User-Agent and never put
    a person's name, email or other personal details in requests.
-6. **User docs.** User docs live in `docs/user/` and are published at
-   https://getartcraft.com/docs/craft-launcher. If a change alters something a user sees or does
-   (UI labels, install, updates, errors), update the matching page in `docs/user/` in the same PR,
-   or add one. Rules: `docs/user/AGENTS.md`. Pages describe the latest release. For a change that is
-   not released yet, write that it was added after <version> and is not in a release yet, or update
-   the page when the release ships.
 
 ## 3. Before you finish a task
 
