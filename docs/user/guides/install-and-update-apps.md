@@ -2,14 +2,14 @@
 title: Install and update Craft apps
 description: Install a Craft app from the launcher, update it, uninstall it, and what "Not available here" means.
 order: 10
-verified: 0.3.2
+verified: 0.4.1
 ---
 
 Click **Install** on an app's card to install it. Click **Update to** followed by a version number to update it. Use the **…** menu on the card to uninstall.
 
 ## Install an app
 
-1. Open the launcher. Each app has a card, or a row in the table view.
+1. Open the launcher. Each app has a card, or a row in the table view. Click a card to open the app's page, with a description and its features.
 2. Find the app. The search box is labelled **Search apps**. The **Not installed** tab lists apps you can install.
 3. Click **Install**.
 4. Wait. The bar shows **Downloading**, then **Verifying checksum…**, then **Installing…**. The launcher checks every download against the release's published checksum before it installs it.
@@ -39,6 +39,10 @@ To have updates installed without asking, open **Settings** and tick **Automatic
 Your documents and settings stay. On Windows, Windows removes the app like any installed program. On macOS the app goes to the Trash. On Linux, your system's package manager removes it and may ask for your password.
 
 The same **…** menu has **Open**, a command to show the app in your file manager (**Show in Explorer** on Windows, **Show in Finder** on macOS, **Show in Files** on Linux), **Reinstall**, **Release notes**, **Website**, **GitHub repository** and **All releases**.
+
+## Hide an app
+
+To take an app you do not use off the list, click **Hide App** in its **…** menu. Hidden apps move to the **Hidden Apps** tab. Click **Unhide App** there to bring one back.
 
 ## What "Not available here" means
 

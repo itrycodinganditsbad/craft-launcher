@@ -2,10 +2,10 @@
 title: The launcher does not open
 description: What to try when ArtCraft Launcher does nothing, closes straight away or exits before its window appears, mostly on Windows.
 order: 10
-verified: 0.3.2
+verified: 0.4.1
 ---
 
-On Windows, try starting the launcher with OpenGL: run `$env:WGPU_BACKEND = 'gl'` in PowerShell, then start `artcraft-launcher.exe` from the same window. The steps are below.
+Install the [latest release](https://github.com/storytold/craft-launcher/releases/latest) first. Version 0.4.0 fixed the most common reason the launcher did not open on Windows. If it still does not open, start it with OpenGL. The steps are below.
 
 ## Symptoms
 
@@ -14,17 +14,23 @@ On Windows, try starting the launcher with OpenGL: run `$env:WGPU_BACKEND = 'gl'
 - Reinstalling, repairing and updating graphics drivers does not help.
 - The portable version may start when the installed one does not, or the other way round.
 
-If you start the launcher from a terminal, the error ends with `Parent device is lost`.
+If you start the launcher from a terminal, the error ends with `Parent device is lost`, or mentions `dxil.dll` or `DXC compile error`.
 
 On a PC with Intel HD or UHD Graphics 500/600 series, the launcher can exit with code 101 and the error `Shader translation error ... (0x80070057)` ([issue #111](https://github.com/storytold/craft-launcher/issues/111)).
 
 ## Fix
 
-These causes were reported in the issue tracker. Try them in order. Windows first.
+Try these in order.
 
-### Windows: start with OpenGL
+### 1. Install the latest version
 
-A launcher user confirmed this works when the error mentions `dxil.dll` or `DXC compile error`. The reporter of [issue #111](https://github.com/storytold/craft-launcher/issues/111) found it works on Intel HD/UHD 500/600 graphics with the `Shader translation error ... (0x80070057)` error.
+1. Check your version. If the launcher opens at all, open **Settings**. The version is under the title.
+2. If it is older than 0.4.0, or you cannot tell, download the installer from the [latest release](https://github.com/storytold/craft-launcher/releases/latest) and install it. See [Install ArtCraft Launcher](../getting-started/install.md).
+3. Start the launcher again.
+
+### 2. Windows: start with OpenGL
+
+If the latest version still does not open, start it with OpenGL. The reporter of [issue #111](https://github.com/storytold/craft-launcher/issues/111) found this works on Intel HD/UHD 500/600 graphics with the `Shader translation error ... (0x80070057)` error. That issue is still open.
 
 1. Open PowerShell.
 2. Go to the folder with `artcraft-launcher.exe`. The installed copy is in `%LOCALAPPDATA%\Programs\ArtCraft Launcher`.
@@ -49,10 +55,12 @@ One user reported that updating the Intel Graphics driver fixed a crash with an 
 
 ## Why this happens
 
-On Windows the launcher draws with Direct3D 12 and compiles its shaders with a compiler file called `dxcompiler.dll`. The launcher does not include one. If Windows finds an old or unmatched copy, the shaders fail and the window never opens. OpenGL does not use that compiler.
+On Windows the launcher draws with Direct3D 12. Before 0.4.0 it compiled its shaders with whatever copy of `dxcompiler.dll` Windows found. The launcher does not include one, so an old or unmatched copy made the shaders fail and the window never opened. Since 0.4.0 the launcher uses the shader compiler built into Windows instead ([pull request 173](https://github.com/storytold/craft-launcher/pull/173)).
 
-Status in version 0.3.2: no fix is released yet. A fix that makes the launcher use the shader compiler built into Windows was merged after 0.3.2 ([pull request 173](https://github.com/storytold/craft-launcher/pull/173)) and will ship in the next release.
+Some graphics drivers still fail with Direct3D 12. OpenGL takes a different path, which is why it can help.
 
 ## Still stuck?
 
 Ask in [Discord](https://discord.gg/artcraft) or open an issue in the [issue tracker](https://github.com/storytold/craft-launcher/issues). Include your launcher version, your system, your graphics card, and the error text if you can get it.
+
+Since 0.4.0 the launcher writes a log, which helps too. On Windows it is `%LOCALAPPDATA%\ArtCraft Launcher\logs\artcraft-launcher.log` (in the portable version, `ArtCraftLauncherData\logs` next to the program). On macOS it is in `~/Library/Application Support/ArtCraft Launcher/logs`, on Linux in `~/.local/share/artcraft-launcher/logs`.

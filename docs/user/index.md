@@ -1,7 +1,7 @@
 ---
 title: ArtCraft Launcher
 description: ArtCraft Launcher installs, updates and opens the apps of the Craft App Suite from one window.
-verified: 0.3.2
+verified: 0.4.1
 ---
 
 ArtCraft Launcher is one place to install, update and open the Craft apps, such as PhotoCraft, FilmCraft and VectorCraft.

@@ -2,10 +2,10 @@
 title: Install ArtCraft Launcher
 description: Download ArtCraft Launcher for Windows, macOS or Linux from GitHub, install it, and find out where it puts your apps.
 order: 10
-verified: 0.3.2
+verified: 0.4.1
 ---
 
-Download the file for your system from the [latest release](https://github.com/storytold/craft-launcher/releases/latest) and install it. In the file names, `<version>` stands for the version number, for example `0.3.2`.
+Download the file for your system from the [latest release](https://github.com/storytold/craft-launcher/releases/latest) and install it. In the file names, `<version>` stands for the version number, for example `0.4.1`.
 
 ## Windows 11
 
@@ -14,7 +14,7 @@ Download the file for your system from the [latest release](https://github.com/s
 3. Run the file and follow the installer.
 4. Start **ArtCraft Launcher** from the Start menu.
 
-The release also has an `arm64` installer for Windows on Arm. The `x64` installer installs for the current user and needs no admin rights. It puts the launcher in `%LOCALAPPDATA%\Programs\ArtCraft Launcher`.
+The release also has an `arm64` installer for Windows on Arm and an `x86` installer for 32-bit Windows. The `x64` installer installs for the current user and needs no admin rights. It puts the launcher in `%LOCALAPPDATA%\Programs\ArtCraft Launcher`.
 
 To run it without installing, download `artcraft-launcher-<version>-windows-x64-portable.zip` instead. Unzip it and run `artcraft-launcher.exe`. It keeps its settings in an `ArtCraftLauncherData` folder next to the program.
 

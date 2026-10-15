@@ -2,7 +2,7 @@
 title: Every app shows "Offline" (UnknownIssuer)
 description: Fix the launcher showing "Not available here" and "Offline" for every app with the error "invalid peer certificate: UnknownIssuer" on Windows.
 order: 20
-verified: 0.3.2
+verified: 0.4.1
 ---
 
 Install launcher version 0.2.0 or newer. If you cannot, open PowerShell, run `Invoke-WebRequest https://api.github.com`, and restart the launcher.
@@ -37,7 +37,7 @@ A contributor confirmed this workaround on an affected PC.
 
 Older versions of the launcher read a copy of the Windows list of trusted certificate authorities when they started. Windows only adds many of them to that list when a program asks it to check a connection. Chrome and Edge do their own checks, so a PC that mostly uses them can be missing the one GitHub needs. Antivirus programs that scan HTTPS traffic can cause the same error.
 
-Since version 0.2.0 the launcher asks Windows to check each connection, and Windows fetches the missing certificate itself. The change was merged on 10 October 2026 ([pull request #43](https://github.com/storytold/craft-launcher/pull/43)) and is in releases 0.2.0 and newer, including 0.3.2. The author tested it on Linux only and not on an affected Windows PC, so whether it clears every case is not confirmed yet.
+Since version 0.2.0 the launcher asks Windows to check each connection, and Windows fetches the missing certificate itself. The change was merged on 10 October 2026 ([pull request #43](https://github.com/storytold/craft-launcher/pull/43)) and is in releases 0.2.0 and newer, including 0.4.1. The author tested it on Linux only and not on an affected Windows PC, so whether it clears every case is not confirmed yet.
 
 The command in the workaround makes Windows check GitHub's connection, which downloads the missing certificate into the store.
 
